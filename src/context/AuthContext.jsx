@@ -9,17 +9,16 @@ export const AuthProvider = ({ children }) => {
 
   /* ── Attach token to every request automatically ── */
   useEffect(() => {
-    const interceptor = axios.interceptors.request.use((config) => {
-      const token = localStorage.getItem("token");
-      if (token) {
-        config.headers.Authorization = `Bearer ${token}`;
-      }
-      return config;
-    });
+  const interceptor = axios.interceptors.request.use((config) => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
+    return config;
+  });
 
-    // Cleanup interceptor on unmount
-    return () => axios.interceptors.request.eject(interceptor);
-  }, []);
+  return () => axios.interceptors.request.eject(interceptor);
+}, []);
 
   /* ── Restore user on page refresh ── */
   useEffect(() => {

@@ -2,12 +2,17 @@ import axios from "axios";
 
 const instance = axios.create({
   baseURL: "https://career-planner-agent-2.onrender.com",
+<<<<<<< Updated upstream
   headers: {
     "Content-Type": "application/json",
   },
 });
 
 /* 🔐 Always attach token if exists */
+=======
+});
+
+>>>>>>> Stashed changes
 instance.interceptors.request.use((config) => {
   const token = localStorage.getItem("token");
 
@@ -18,6 +23,7 @@ instance.interceptors.request.use((config) => {
   return config;
 });
 
+<<<<<<< Updated upstream
 /* 🚨 Auto logout if 401 */
 instance.interceptors.response.use(
   (response) => response,
@@ -31,3 +37,6 @@ instance.interceptors.response.use(
 );
 
 export default instance;
+=======
+export default instance;
+>>>>>>> Stashed changes
