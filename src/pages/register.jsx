@@ -7,7 +7,7 @@ export default function Register() {
   const navigate = useNavigate();
 
   const [form, setForm] = useState({
-    username: "",
+    name: "",
     email: "",
     password: "",
   });
@@ -23,25 +23,24 @@ export default function Register() {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    setError("");
+  e.preventDefault();
+  setError("");
+  setLoading(true);
 
-    setLoading(true);
+  const result = await register(
+    form.name,
+    form.email,
+    form.password
+  );
 
-    const result = await register({
-      username: form.username,
-      email: form.email,
-      password: form.password
-    });
+  setLoading(false);
 
-    setLoading(false);
-
-    if (result.success) {
-      navigate("/login");
-    } else {
-      setError(result.message);
-    }
-  };
+  if (result.success) {
+    navigate("/login");
+  } else {
+    setError(result.message);
+  }
+};
 
   return (
     <section className="min-h-screen flex items-center justify-center px-6 pt-32">
@@ -62,9 +61,9 @@ export default function Register() {
 
           <input
             type="text"
-            name="username"
-            placeholder="Username"
-            value={form.username}
+            name="name"
+            placeholder="name"
+            value={form.name}
             onChange={handleChange}
             required
             className="w-full bg-[#0b1220] border border-white/10 rounded-xl p-4 outline-none focus:border-purple-500"

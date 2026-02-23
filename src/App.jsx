@@ -11,8 +11,17 @@ import RoadmapPage from "./pages/RoadmapPage";
 import RoadmapView from "./pages/Roadmapview";
 
 function PrivateRoute({ children }) {
-  const { user } = useAuth();
-  return user ? children : <Navigate to="/login" replace />;
+  const { user, loading } = useAuth();
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center text-white">
+        Checking authentication...
+      </div>
+    );
+  }
+
+  return user ? children : <Navigate to="/login" />;
 }
 
 export default function App() {
