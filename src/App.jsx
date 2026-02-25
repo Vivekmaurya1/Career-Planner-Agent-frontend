@@ -3,7 +3,7 @@ import { Routes, Route, Navigate, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { useCallback } from "react";
 
-import { ThemeProvider, useTheme } from "./context/themeContext";
+import { ThemeProvider, useTheme } from "./context/ThemeContext";
 import { AuthProvider } from "./context/AuthContext";
 
 import Navbar     from "./components/Navbar";
