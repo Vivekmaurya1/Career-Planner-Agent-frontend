@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://career-planner-agent-frontend.vercel.app/sitemap.xml
